@@ -1,0 +1,51 @@
+Usage
+A canvas consists of a drawable region defined in HTML code with height and width attributes. JavaScript code may access the area through a full set of drawing functions similar to those of other common 2D APIs, thus allowing for dynamically generated graphics. Some anticipated uses of canvas include building graphs, animations, games, and image composition.
+
+Example
+The following code creates a Canvas element in an HTML page:
+
+<canvas id="example" width="200" height="200">
+This text is displayed if your browser does not support HTML5 Canvas.
+</canvas>
+Using JavaScript, you can draw on the canvas:
+
+var example = document.getElementById('example');
+var context = example.getContext('2d');
+context.fillStyle = 'red';
+context.fillRect(30, 30, 50, 50);
+This code draws a red rectangle on the screen.
+
+The Canvas API also provides save() and restore(), for saving and restoring all the canvas context's attributes.
+
+Canvas element size versus drawing surface size
+A canvas actually has two sizes: the size of the element itself and the size of the element's drawing surface. Setting the element's width and height attributes sets both of these sizes; CSS attributes affect only the element's size and not the drawing surface.
+
+By default, both the canvas element's size and the size of its drawing surface is 300 screen pixels wide and 150 screen pixels high. In the listing shown in the example, which uses CSS to set the canvas element's size, the size of the element is 600 pixels wide and 300 pixels high, but the size of the drawing surface remains unchanged at the default value of 300 pixels × 150 pixels. When a canvas element's size does not match the size of its drawing surface, the browser scales the drawing surface to fit the element (which may result in surprising and unwanted effects).
+
+Example on setting element size and drawing surface size to different values:
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Canvas element size: 600 x 300,
+    Canvas drawing surface size: 300 x 150</title>
+    <style>
+        body {
+            background: #dddddd;
+        }
+        #canvas {
+            margin: 20px;
+            padding: 20px;
+            background: #ffffff;
+            border: thin inset #aaaaaa;
+            width: 600px;
+            height: 300px;
+        }
+    </style>
+    </head>
+    <body>
+        <canvas id="canvas">
+        Canvas not supported
+        </canvas>
+    </body>
+</html>
